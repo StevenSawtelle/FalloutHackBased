@@ -18,13 +18,46 @@ public class FalloutHack {//based on reddit daily challenge #238
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader inp2 = new BufferedReader(isr);
 		
+		int difficulty=0;
+		int wordLength=0;
+		int wordsNeeded=0;
+		int guesses=4;//available guesses
+		do{
+			System.out.println("Difficult desired? Enter 1-5");
+			try{
+				difficulty = Integer.parseInt(inp2.readLine().trim());//implement difficulty setting
+			}catch(Exception e){}
+			
+			switch(difficulty){
+				case 1:
+					wordLength = 5;
+					wordsNeeded = 5;
+					//guesses=3;
+					break;
+				case 2:
+					wordLength=8;
+					wordsNeeded=8;
+					break;
+				case 3:
+					wordLength=11;
+					wordsNeeded=11;
+					break;
+				case 4:
+					wordLength=13;
+					wordsNeeded=13;
+					//guesses=5;
+					break;
+				case 5:
+					wordLength=15;
+					wordsNeeded=15;
+					//guesses=5;
+					break;
+				default:
+					System.out.println("Not a valid input!");
+					break;
+			}
+		}while(difficulty==0);
 		
-		try{
-			//int difficulty = Integer.parseInt(inp2.readLine().trim());//implement difficulty setting
-		}catch(Exception e){}
-
-		int wordLength=7;//base on difficulty
-		int wordsNeeded=7;//base on difficulty, not necesarilly same
 		String[] words = new String[wordsNeeded];//array holding words to be played using
 		int wordsFound=0;//keeps track of how full array is
 		Random rando = new Random();
@@ -67,7 +100,6 @@ public class FalloutHack {//based on reddit daily challenge #238
 			System.out.println(words[i]);
 		}
 		boolean gameOver=false;//controls if game is being played
-		int guesses=4;//available guesses
 		String guess="";//users guess
 		
 		while(!gameOver){
